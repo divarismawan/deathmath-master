@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Death Math</string>
+    <string name="random">random</string>
+    <string name="kali">kali</string>
+    <string name="bagi">bagi</string>
+    <string name="jumlah">jumlah</string>
+    <string name="kurang">kurang</string>
+</resources>
