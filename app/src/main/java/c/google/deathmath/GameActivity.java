@@ -54,15 +54,12 @@ public class GameActivity extends AppCompatActivity {
     CountDownTimer myTimer;
 
 
-
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
         Intent myIntent = getIntent();
         value = myIntent.getIntExtra("result",0 );
-
 
         tv_math   = (TextView)findViewById(R.id.tv_math);
         tv_result = (TextView)findViewById(R.id.tv_result);
@@ -245,7 +242,6 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
-
     public void restarttimer(int addtime){
         myTimer = new CountDownTimer(sisawaktuMilisecond+addtime,1000){
             public void onTick(long l) {
@@ -253,12 +249,9 @@ public class GameActivity extends AppCompatActivity {
                 updateTimer();
             }
             public void onFinish() {
-                String displayPoint;
-                //tv_timer.setText("0");
                 btn_submit.setEnabled(false);
-                displayPoint = String.valueOf(point);
                 Intent intent = new Intent(getApplicationContext(), PopUpActivity.class);
-                intent.putExtra("point", displayPoint);
+                intent.putExtra("point", point);
                 if (value==0){
                     intent.putExtra("result",0);
                 }else if (value==1){
@@ -278,6 +271,7 @@ public class GameActivity extends AppCompatActivity {
         int second = (int) (sisawaktuMilisecond /1000);
         tv_timer.setText("" +second);
     }
+
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(GameActivity.this, PopUpBackActivity.class);

@@ -20,7 +20,7 @@ public class PopUpBackActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pop_up_back);
 
-        btnCancel = (Button) findViewById(R.id.btn_cancel);
+        btnCancel = findViewById(R.id.btn_cancel);
         btnBackHome =findViewById(R.id.btn_back_home);
 
         DisplayMetrics dm = new DisplayMetrics();
@@ -31,22 +31,29 @@ public class PopUpBackActivity extends AppCompatActivity {
 
         getWindow().setLayout((int)(width*.8),(int)(height*.6));
 
-        btnCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        setBtnBackHome(); //yes
+        setBtnCancel();   //no
+    }
 
-
-                finish();
-            }
-        });
-
+    public void setBtnBackHome(){
         btnBackHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(PopUpBackActivity.this, DifficultyActivity.class);
-                startActivity(intent);
                 finishAffinity();
                 System.exit(0);
+                startActivity(intent);
+
+            }
+        });
+
+    }
+
+    public void setBtnCancel(){
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }

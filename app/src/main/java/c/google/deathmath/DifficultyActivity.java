@@ -10,7 +10,6 @@ import android.widget.GridLayout;
 public class DifficultyActivity extends AppCompatActivity {
 
     GridLayout gr_layout;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,9 +45,4 @@ public class DifficultyActivity extends AppCompatActivity {
         }
         startActivity(intent);
     }
-
-//    @Override
-//    public void onBackPressed() {
-//        android.os.Process.killProcess(android.os.Process.myPid());
-//    }
 }

@@ -6,14 +6,18 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class PopUpActivity extends AppCompatActivity {
 
     int value;
+    int score;
+
     String display_score;
     TextView tvScore;
     Button btnHome, btnRetry;
+    ImageView img_score;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +27,7 @@ public class PopUpActivity extends AppCompatActivity {
         tvScore = (TextView) findViewById(R.id.tv_score_pop);
         btnHome = (Button) findViewById(R.id.btn_home);
         btnRetry =(Button) findViewById(R.id.btn_retry);
+        img_score = findViewById(R.id.img_score);
 
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -33,18 +38,17 @@ public class PopUpActivity extends AppCompatActivity {
         getWindow().setLayout((int)(width*.8),(int)(height*.6));
 
         Intent intent = getIntent();
-        display_score = intent.getStringExtra("point");
-        value = intent.getIntExtra("result", 0);
-        tvScore.setText(display_score);
 
-        btnHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(PopUpActivity.this, DifficultyActivity.class);
-                startActivity(intent);
-            }
-        });
+        score = intent.getIntExtra("point", 0);
+        value = intent.getIntExtra("result", 0); //to retry the game
+        setImg_score(score);
+        tvScore.setText(""+score);
 
+        setBtnHome();
+        setBtnRetry();
+    }
+
+    public void setBtnRetry(){
         btnRetry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,5 +59,21 @@ public class PopUpActivity extends AppCompatActivity {
         });
     }
 
+    public void setBtnHome(){
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PopUpActivity.this, DifficultyActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
 
+    public void setImg_score(int sc){
+        if (sc<=50){
+            img_score.setImageResource(R.drawable.minus);
+        }else{
+            img_score.setImageResource(R.drawable.add);
+        }
+    }
 }
