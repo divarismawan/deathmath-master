@@ -21,7 +21,9 @@
         <activity
             android:name=".PopUpActivity"
             android:theme="@style/AppTheme.PopUpTheme" />
-        <activity android:name=".PopUpBackActivity" android:theme="@style/AppTheme.PopUpBackTheme"></activity>
+        <activity
+            android:name=".PopUpBackActivity"
+            android:theme="@style/AppTheme.PopUpBackTheme" />
     </application>
 
 </manifest>

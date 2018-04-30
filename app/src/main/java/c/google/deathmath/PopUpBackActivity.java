@@ -40,9 +40,9 @@ public class PopUpBackActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(PopUpBackActivity.this, DifficultyActivity.class);
+                startActivity(intent);
                 finishAffinity();
                 System.exit(0);
-                startActivity(intent);
 
             }
         });
